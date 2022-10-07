@@ -29,7 +29,7 @@
           <input
             type="email"
             id="email"
-            class="form-control panya-input"
+            class="form-control nature-input"
             required
             data-valid="false"
             placeholder="請輸入 Email"
@@ -41,7 +41,7 @@
           <input
             type="password"
             id="password"
-            class="form-control panya-input"
+            class="form-control nature-input"
             required
             data-valid="false"
             placeholder="請輸入密碼"
@@ -92,7 +92,7 @@ export default {
             this.$emitter.emit('page-loading', false);
           } else {
             const { token, expired } = res.data;
-            document.cookie = `panyaToken=${token}; expires=${new Date(expired)}`;
+            document.cookie = `natureToken=${token}; expires=${new Date(expired)}`;
             this.$router.push('/admin/products');
           }
         })

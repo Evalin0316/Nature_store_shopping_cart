@@ -46,7 +46,7 @@
             type="number"
             min="1"
             :max="maxNum"
-            class="form-control panya-input text-center text-md-start"
+            class="form-control nature-input text-center text-md-start"
             v-model.number="product.qty"
             inputmode="numeric"
             :disabled="isDisabled === product.id || product.is_max"

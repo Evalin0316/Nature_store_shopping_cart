@@ -64,10 +64,10 @@
           </li>
         </ul>
         <div class="input-group mb-4">
-          <input type="text" class="form-control panya-input p-2"
+          <input type="text" class="form-control nature-input p-2"
           placeholder="已套用優惠券" disabled
           v-if="isDiscount">
-          <input type="text" class="form-control panya-input p-2"
+          <input type="text" class="form-control nature-input p-2"
           placeholder="輸入優惠碼"
           v-model="code"
           v-else>
@@ -101,7 +101,7 @@
                 Email
               </label>
               <Field type="email" id="email" name="Email"
-                class="form-control panya-input"
+                class="form-control nature-input"
                 :class="{ 'is-invalid': errors['Email'] }"
                 placeholder="請輸入 Email"
                 rules="email|required"
@@ -115,7 +115,7 @@
                 收件人姓名
               </label>
               <Field type="name" id="name" name="姓名"
-                class="form-control panya-input"
+                class="form-control nature-input"
                 :class="{ 'is-invalid': errors['姓名'] }"
                 placeholder="請輸入姓名"
                 rules="required"
@@ -128,7 +128,7 @@
                 聯絡電話
               </label>
               <Field type="tel" id="tel" name="電話"
-                class="form-control panya-input"
+                class="form-control nature-input"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入手機號碼"
                 :rules="isPhone"
@@ -142,7 +142,7 @@
                 收件地址
               </label>
               <Field type="text" id="address" name="地址"
-                class="form-control panya-input"
+                class="form-control nature-input"
                 :class="{ 'is-invalid': errors['地址'] }"
                 placeholder="請輸入地址"
                 rules="required"
@@ -151,7 +151,7 @@
             </li>
             <li>
               <label for="message" class="form-label">備註</label>
-              <textarea id="message" class="form-control panya-input" rows="3"
+              <textarea id="message" class="form-control nature-input" rows="3"
                 v-model="message"></textarea>
             </li>
           </ul>
