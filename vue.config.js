@@ -1,5 +1,5 @@
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/panya/'
+    ? '/Nature_store_lastest/'
     : '/',
 };
