@@ -1,9 +1,9 @@
 <template>
-  <div class="loading bouncecookie"
+  <div class="loading Tshirt"
     ref="loading"
     :class="isLoading ? '' : 'fade'">
-    <i class="fas fa-tshirt fa-2x cookie"></i>
-    <span>incoming</span>
+    <i class="fas fa-tshirt fa-2x tshirt"></i>
+    <span>Loading</span>
   </div>
 </template>
 <script>
@@ -17,9 +17,9 @@ export default {
   mounted() {
     this.$emitter.on('page-loading', (val) => {
       const body = document.querySelector('body');
-      this.isLoading = val;
+      this.isLoading = val; // true or false
       if (val) {
-        this.$refs.loading.classList.remove('d-none');
+        this.$refs.loading.classList.remove('d-none'); // 移除loading
         body.setAttribute('class', 'mh-100vh overflow-hidden');
       } else {
         setTimeout(() => {
