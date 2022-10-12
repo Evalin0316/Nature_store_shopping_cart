@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
-    <div class="product container row g-0 px-md-3 mx-auto"
-      v-show="filterDatas.length > 0">
+    <div class="product container row g-0 px-md-3 mx-auto">
       <div class="product-photos col-md-6 row g-0 align-self-start p-3 p-md-0">
         <div class="photo-lg col-12">
-          <span :style="{ 'background-image': `url(${enterImage})` }"></span>
+          <span :style="{ 'background-image': `url(${enterImage == '' ? firstImage :
+          enterImage})` }"></span>
         </div>
         <div
           class="photo-sm col-4"
@@ -67,6 +67,7 @@
       </div>
       <div
         class="product-page row g-0 justify-content-between py-4 px-3 px-md-0"
+        v-if="filterDatas.length > 0"
       >
         <button
           class="col-6 col-md-2 btn btn-outline-secondary fs-7"
@@ -90,7 +91,7 @@
         </button>
       </div>
     </div>
-    <div class="product-info" v-show="filterDatas.length > 0">
+    <div class="product-info mt-4">
       <div class="container row g-0 mx-auto p-3 pe-md-0 py-md-0">
         <div class="col-md-6 p-3 px-md-0 py-md-5 lh-lg">
           <h2 class="fs-5 text-primary">注意事項</h2>
@@ -144,6 +145,7 @@ export default {
       filterDatas: [],
       tempNum: {},
       maxNum: 0,
+      firstImage: '',
     };
   },
   methods: {
@@ -157,7 +159,9 @@ export default {
           this.product = res.data.product;
           this.product.qty = 1;
           this.category = this.product.category;
-          const { 0: img } = this.product.imagesUrl;
+          const img = this.product.imagesUrl;
+          /* eslint-disable */
+          this.firstImage = this.product.imagesUrl[0];
           this.enterImage = img;
           document.title = `${this.product.title} - Nature`;
           this.filterProducts();

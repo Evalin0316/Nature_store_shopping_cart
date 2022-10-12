@@ -1,9 +1,9 @@
 <template>
   <div class="container px-3 pb-5">
     <h1 class="fs-4 text-center py-3">Nature Collection</h1>
-    <ul class="category list-unstyled d-flex justify-content-center mt-4">
+    <ul class="category list-unstyled d-flex justify-content-center mt-4 flex-wrap">
       <li
-        class="btn btn-outline-secondary p-0"
+        class="btn btn-outline-secondary p-0 m-2"
         :class="isActive === 'all' ? 'active' : ''"
         @click="filterProducts(1, 'all'), (isActive = 'all')"
         v-if="products.length > 0"
@@ -16,7 +16,7 @@
         </router-link>
       </li>
       <li
-        class="btn btn-outline-secondary p-0 ms-1"
+        class="btn btn-outline-secondary p-0 ms-1 m-2"
         v-for="(item, i) in category"
         :key="i"
         :class="isActive === item ? 'active' : ''"

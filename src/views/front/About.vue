@@ -6,18 +6,13 @@
     </header>
     <div
       class="
-        container-fluid
-        px-3 px-md-0
-        pb-5
         d-flex
-        justify-center
         flex-wrap
       "
-      style="width: 90%"
     >
-    <div class="d-flex justify-between">
+    <div class="d-flex justify-center ml-8">
       <div>
-        <h1 class="fs-4 mt-5 font-weight-bold">品牌理念</h1>
+        <h1 class="fs-4 mt-5 font-weight-bold ">品牌理念</h1>
         <p class="m-4 flex">
           自然X舒適的時裝搭配，充分享受自由的生活，創造屬於自己的穿搭樂趣
         </p>
@@ -41,8 +36,17 @@
 <script>
 export default {
   name: 'About',
+  emits: ['page-loading'],
   data() {
     return {};
+  },
+  mounted() {
+    setTimeout(() => {
+      this.$emitter.emit('page-loading', false);
+    }, 1500);
+  },
+  created() {
+    this.$emitter.emit('page-loading', true);
   },
 };
 </script>
