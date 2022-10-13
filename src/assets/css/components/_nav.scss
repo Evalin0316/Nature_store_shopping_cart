@@ -19,6 +19,18 @@
     }
     }
 
+    .nav-slider{
+        display: block;
+        color:#343a40;
+        border: 1px solid transparent;
+        background-color: transparent;
+        padding:0.5rem;
+        font-weight: 500;
+        &::after{
+            border: 1px solid transparent;
+        }
+    }
+
   .navbar-collapse{
     position: absolute;
     left: 50%;

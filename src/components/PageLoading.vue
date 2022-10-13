@@ -1,7 +1,6 @@
 <template>
   <div class="loading Tshirt"
-    ref="loading"
-    :class="isLoading ? '' : 'fade'">
+    ref="loading">
     <i class="fas fa-tshirt fa-2x tshirt"></i>
     <span>Loading</span>
   </div>
@@ -28,6 +27,8 @@ export default {
         }, 200);
       }
     });
+  },
+  created() {
   },
 };
 </script>

@@ -8,13 +8,13 @@
       <div class="container py-2 px-3 text-secondary d-flex justify-content-end">
         <div class="collapse navbar-collapse" :class="toggleNav ? 'show' : ''">
           <ul class="navbar-nav">
-          <li class="navbar-itemd">
+          <li class="navbar-itemd nature">
             <router-link to="/" class="nav-link navbar-brand"
             @click="closeNav">
             Nature<br>
             </router-link>
             </li>
-            <li class="navbar-itemd">
+            <li class="navbar-itemd nature">
               <router-link
                 class="nav-link"
                 to="/about"
@@ -22,13 +22,24 @@
                 >關於Nature</router-link
               >
             </li>
-            <li class="navbar-item">
+            <li class="navbar-itemd nature">
               <router-link
                 class="nav-link"
                 to="/products?category=all&page=1"
                 @click="closeNav"
                 >New Collection</router-link
               >
+            </li>
+            <li>
+            <!-- <select
+            class="nav-slider"
+            @change="toPage($event)"
+            >
+            <option value="" selected disabled>Products</option>
+            <option value="new">
+              New Collection
+            </option>
+            </select> -->
             </li>
           </ul>
         </div>
@@ -129,6 +140,7 @@ export default {
         this.key = index;
       }
       const list = document.querySelectorAll('.search-list li');
+      console.log(this.filterDatas);
       const option = this.filterDatas.filter(
         (item) => item.title === list[this.key].textContent,
       );
@@ -182,6 +194,15 @@ export default {
       this.$emitter.emit('toggle-cart', true);
       this.toggleNav = false;
     },
+    toPage(e) {
+      /* eslint-disable */
+      const value = e.target.value;
+      if (value === 'new') {
+        this.$router.push('/products?category=all&page=1');
+      } else {
+        this.$router.push('/');
+      }
+    },
   },
   computed: {
     filterDatas() {
@@ -213,10 +234,19 @@ export default {
     this.$refs.searchInput.addEventListener('keydown', (e) => {
       if (e.keyCode === 13) {
         this.toggleList();
-        // 這段不確定有沒有正確移除監聽，該怎麼確認呢？
         window.removeEventListener('scroll', this.scroll);
       }
     });
   },
 };
 </script>
+
+<style scope lang="scss">
+
+.nature{
+  &:hover{
+    background-color: #FAEBD7;
+  }
+}
+
+</style>

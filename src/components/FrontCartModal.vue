@@ -84,7 +84,7 @@
         <p class="p-4 pt-0 text-center">
           <button
             type="button"
-            class="btn col-12 btn-light p-3"
+            class="btn-shopping col-12 btn-light p-3"
             @click="checkout"
           >
             確認結帳
@@ -114,7 +114,7 @@ export default {
       cart: {},
       toggleCart: false,
       isDisabled: '',
-      tempNum: '',
+      tempNum: '', // 商品數量
     };
   },
   emits: ['get-cart', 'page-loading', 'toggle-spinner', 'toggle-overlay'],

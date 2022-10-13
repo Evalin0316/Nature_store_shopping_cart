@@ -12,8 +12,10 @@
       <div class="container row g-0 mx-auto px-3 fs-7 ls-2
         text-secondary text-uppercase text-center"
         ref="footer">
-        <div class="navbar-brand position-absolute"
+        <div class="navbar-brand position-absolute title"
         style="left: 50%; transform: translate(-50%, -50%); top: -10%;">Nature</div>
+        <!-- <div class="box pink"></div>
+        <div class="box orange"></div> -->
         <p>
           本網站僅供個人作品使用，不提供商業用途
           <span class="d-none d-md-inline-block"> |
@@ -37,11 +39,6 @@
               <i class="far fa-lg fa-envelope"></i>
             </a>
           </li>
-          <li class="fs-7">
-            <a href="#" class="d-flex" target="_blank">
-              <span class="flat-icon d-block"></span>
-            </a>
-          </li>
         </ul>
       </div>
     </footer>
@@ -57,6 +54,7 @@
 <script>
 import Navbar from '@/components/FrontNavbar.vue';
 import { apiAllProducts, apiGetCart, apiAddCart } from '@/scripts/api';
+// import { gsap } from 'gsap';
 
 export default {
   emits: ['page-loading', 'push-message', 'toggle-spinner', 'send-cart'],
@@ -167,11 +165,11 @@ export default {
   mounted() {
     this.getCart();
     this.getAllProducts();
-    this.$emitter.on('add-cart', (res) => {
+    this.$emitter.on('add-cart', (res) => { // 接收
       const { item, qty } = res;
       this.addCart(item, qty);
     });
-    this.$emitter.on('get-cart', () => {
+    this.$emitter.on('get-cart', () => { // 接收
       this.getCart();
     });
     this.$emitter.on('toggle-overlay', (val) => {
@@ -191,3 +189,24 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.box {
+  display: block;
+}
+
+.pink {
+  background-color: pink;
+  width:50px;
+  height: 50px;
+  border-radius: 80%;
+}
+
+.orange{
+  background-color: orange;
+  width:50px;
+  height: 50px;
+  border-radius: 80%;
+}
+
+</style>

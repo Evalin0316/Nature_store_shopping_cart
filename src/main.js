@@ -21,6 +21,7 @@ import emitter from '@/scripts/mitt';
 import router from '@/router';
 import App from '@/App.vue';
 import { pushMessageState, cash } from '@/scripts/methods';
+import { gsap } from 'gsap';
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
@@ -49,4 +50,5 @@ app.component('ToastMessage', ToastMessage)
   .use(fontawesome)
   .use(VueAxios, axios)
   .use(router)
+  .use(gsap)
   .mount('#app');

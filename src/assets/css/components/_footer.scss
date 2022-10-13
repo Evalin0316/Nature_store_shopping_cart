@@ -17,15 +17,6 @@ footer{
     li + li{
     margin-left: .5rem   
     }
-    .flat-icon{
-    width: 22px;
-    height: 22px;
-    background: url('~@/assets/images/line.png') no-repeat center top;
-    background-size: auto 200%;
-    }
-    li:hover .flat-icon{
-    background-position: center bottom;
-    }
 }
 
 #scrollTop{
