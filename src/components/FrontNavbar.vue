@@ -22,13 +22,24 @@
                 >關於Nature</router-link
               >
             </li>
-            <li class="navbar-item">
+            <li class="navbar-itemd">
+            </li>
+            <li>
               <router-link
                 class="nav-link"
                 to="/products?category=all&page=1"
                 @click="closeNav"
                 >New Collection</router-link
               >
+            <!-- <select
+            class="nav-slider"
+            @change="toPage($event)"
+            >
+            <option value="" selected disabled>Products</option>
+            <option value="new">
+              New Collection
+            </option>
+            </select> -->
             </li>
           </ul>
         </div>
@@ -181,6 +192,15 @@ export default {
     openCart() {
       this.$emitter.emit('toggle-cart', true);
       this.toggleNav = false;
+    },
+    toPage(e) {
+      /* eslint-disable */
+      const value = e.target.value;
+      if (value === 'new') {
+        this.$router.push('/products?category=all&page=1');
+      } else {
+        this.$router.push('/');
+      }
     },
   },
   computed: {

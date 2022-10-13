@@ -114,7 +114,7 @@ export default {
       cart: {},
       toggleCart: false,
       isDisabled: '',
-      tempNum: '',
+      tempNum: '', // 商品數量
     };
   },
   emits: ['get-cart', 'page-loading', 'toggle-spinner', 'toggle-overlay'],
