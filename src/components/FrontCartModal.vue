@@ -84,7 +84,7 @@
         <p class="p-4 pt-0 text-center">
           <button
             type="button"
-            class="btn col-12 btn-light p-3"
+            class="btn-shopping col-12 btn-light p-3"
             @click="checkout"
           >
             確認結帳

@@ -77,6 +77,14 @@
         :is-disabled="isDisabled"
         title="熱銷商品"
       />
+      <div>
+        <div>月行程</div>
+          <div class="bg">
+          </div>
+          <div class="box step1"></div>
+          <div class="box step2"></div>
+          <div class="box step3"></div>
+      </div>
     </div>
     <div class="bg-cover booking text-light flex-column">
       <h3 class="fs-5 ls-2 fw-normal mb-4">訂閱最新消息</h3>
@@ -119,6 +127,9 @@
 import { apiAllProducts } from '@/scripts/api';
 import FrontSwiper from '@/components/FrontSwiper.vue';
 import fadeInMix from '@/mixins/FadeInMix.vue';
+import { gsap } from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { TextPlugin } from 'gsap/TextPlugin';
 
 export default {
   emits: ['page-loading', 'push-message', 'toggle-spinner'],
@@ -170,5 +181,48 @@ export default {
     this.getAllProducts();
     this.$emitter.emit('page-loading', true);
   },
+  mounted() {
+    gsap.to('.step1', {
+      duration: 1,
+      x: 300,
+      start: 'top top',
+      end: '+=300',
+      ease: 'linear',
+    });
+    gsap.to('.step2', {
+      duration: 10,
+      x: 300,
+      ease: 'power1.out',
+      start: 'top top',
+      end: '+=300',
+    });
+    gsap.to('.step3', {
+      duration: 15,
+      x: 300,
+      ease: 'linear',
+    });
+    // gsap.to('.b4', { duration: 3, x: 300, ease: 'none' });
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+
+.box{
+  width:50px;
+  height: 50px;
+  line-height: 100px;
+}
+.step1{
+  background-color: beige;
+}
+
+.step2{
+  background-color: azure;
+}
+
+.step3{
+  background-color: aquamarine;
+}
+
+</style>

@@ -56,6 +56,19 @@
   .btn{
     letter-spacing: 2px;
     border-radius: 0 !important;
+    width:150px;
+    &-light{
+        &:hover{
+            background: $primary;
+            border-color: $primary;
+            color: $white;
+        }
+    }
+  }
+
+  .btn-shopping{
+    letter-spacing: 2px;
+    border-radius: 0 !important;
     &-light{
         &:hover{
             background: $primary;
@@ -120,7 +133,8 @@
 
 
 .banner{
-    background-image: url('https://i.imgur.com/IHhuCdG.jpg');
+    background-image:linear-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.5)),
+    url("https://i.imgur.com/IHhuCdG.jpg");
     &::after{
         background: linear-gradient(180deg, $warm 0%, $brown 100%);
         opacity: .2;
