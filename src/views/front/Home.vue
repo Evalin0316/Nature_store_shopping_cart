@@ -77,15 +77,41 @@
         :is-disabled="isDisabled"
         title="熱銷商品"
       />
-      <div>
-        <div>月行程</div>
-          <div class="bg">
-          </div>
-          <div class="box step1"></div>
-          <div class="box step2"></div>
-          <div class="box step3"></div>
-      </div>
     </div>
+     <!-- Scheduler gsap Start-->
+    <section class="section1">November Scheduler</section>
+      <section class="section2">
+      <ul class="container2">
+        <li class="boxwrap-half">
+          <div>
+            <div class="animation-wrapper box2 from-left"></div>
+            <p>
+              <span class="animation-wrapper typing typing1"></span>
+              <span class="cursor">_</span>
+            </p>
+          </div>
+        </li>
+        <li class="boxwrap-full">
+          <div>
+            <div class="animation-wrapper box2 from-right"></div>
+            <p>
+              <span class="animation-wrapper typing typing2"></span>
+              <span class="cursor">_</span>
+            </p>
+          </div>
+        </li>
+        <li class="boxwrap-half">
+          <div>
+            <div class="animation-wrapper box2 from-left"></div>
+            <p>
+              <span class="animation-wrapper typing typing3"></span>
+              <span class="cursor">_</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!-- Scheduler gsap END-->
     <div class="bg-cover booking text-light flex-column">
       <h3 class="fs-5 ls-2 fw-normal mb-4">訂閱最新消息</h3>
         <Form class="container row g-2 g-md-0 px-5 w-md-60
@@ -128,8 +154,8 @@ import { apiAllProducts } from '@/scripts/api';
 import FrontSwiper from '@/components/FrontSwiper.vue';
 import fadeInMix from '@/mixins/FadeInMix.vue';
 import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { TextPlugin } from 'gsap/TextPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
 
 export default {
   emits: ['page-loading', 'push-message', 'toggle-spinner'],
@@ -182,47 +208,182 @@ export default {
     this.$emitter.emit('page-loading', true);
   },
   mounted() {
-    gsap.to('.step1', {
-      duration: 1,
-      x: 300,
-      start: 'top top',
-      end: '+=300',
-      ease: 'linear',
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+    // 打字提示閃爍效果
+    gsap.fromTo(
+      '.cursor',
+      0,
+      {
+        visibility: 'hidden',
+      },
+      {
+        visibility: 'visible',
+        repeat: -1,
+        yoyo: true, // 若為true，則動畫repeat運行順序會以倒放的形式回去
+        repeatDelay: 0.3, // 下一次repeat的deplay時間
+      },
+    );
+
+    function hide(element) {
+      gsap.set(element, { opacity: 0, visibility: 'hidden' });
+    }
+
+    function animated(element) {
+      let x = 0;
+
+      // 依照條件設定x初始值
+      if (element.classList.contains('from-left')) {
+        x = -100; // 元素從左方漸變
+      } else if (element.classList.contains('from-right')) {
+        x = 100; // 元素從右方漸變
+      }
+
+      // 設定元素初始值
+      // eslint-disable-next-line no-param-reassign
+      element.style.transform = `translate(${x}px, 0px)`;
+      gsap.fromTo(
+        element,
+        {
+          x, y: 0, opacity: 0, visibility: 'hidden',
+        },
+        {
+          duration: 1,
+          delay: 0.2,
+          x: 0,
+          y: 0,
+          visibility: 'visible',
+          opacity: '1',
+          ease: 'slow',
+          overwrite: 'auto',
+        },
+      );
+    }
+
+    gsap.utils.toArray('.animation-wrapper').forEach((element) => {
+      if (
+        element.classList.contains('from-left')
+        || element.classList.contains('from-right')
+      ) {
+        hide(element);
+        ScrollTrigger.create({
+          trigger: element,
+          markers: true,
+          onEnter() {
+            animated(element);
+          },
+          onEnterBack() {
+            animated(element);
+          },
+          onLeave() {
+            hide(element);
+          },
+        });
+      } else if (element.classList.contains('typing')) {
+        const typing1Content = '11/01 PM20:00 直播I';
+        const typing2Content = '11/02 PM20:00 直播II';
+        const typing3Content = '11/04 PM20:00 直播III';
+
+        gsap.to('.typing1', {
+          text: typing1Content,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: '.typing1',
+            toggleActions: 'play pause resume reset', // 滑鼠滾動位置
+          },
+        });
+
+        gsap.to('.typing2', {
+          text: typing2Content,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: '.typing2',
+            toggleActions: 'play pause resume reset',
+          },
+        });
+        gsap.to('.typing3', {
+          text: typing3Content,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: '.typing3',
+            toggleActions: 'play pause resume reset',
+          },
+        });
+      }
     });
-    gsap.to('.step2', {
-      duration: 10,
-      x: 300,
-      ease: 'power1.out',
-      start: 'top top',
-      end: '+=300',
-    });
-    gsap.to('.step3', {
-      duration: 15,
-      x: 300,
-      ease: 'linear',
-    });
-    // gsap.to('.b4', { duration: 3, x: 300, ease: 'none' });
   },
+  // unmounted() {
+  //   const trigger = ScrollTrigger.getAll();
+  //   trigger.kill();
+  // },
 };
 </script>
 
 <style lang="scss" scoped>
+  .section1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:30vh;
+    background-color: wheat;
+    text-align: center;
+    font-size: 30px;
+  }
 
-.box{
-  width:50px;
-  height: 50px;
-  line-height: 100px;
-}
-.step1{
-  background-color: beige;
-}
+  .section2 {
+    display: flex;
+    justify-content: center;
+    padding: 200px 0;
+    background-color: wheat;
+  }
 
-.step2{
-  background-color: azure;
-}
+  .container2 {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1140px;
+    margin-left: -10%;
+  }
+  .boxwrap-half {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    width: 50%;
+  }
+  .boxwrap-full {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
 
-.step3{
-  background-color: aquamarine;
-}
+  .box2 {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 60%;
+  }
+
+  .section3 {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #1e2a60;
+  }
+
+  .typing {
+    font-size: 2rem;
+    font-family: "DotGothic16", sans-serif;
+    color: #fff;
+  }
+  .cursor {
+    visibility: "hidden";
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  .line{
+    width: 20px;
+    background: black;
+  }
 
 </style>
