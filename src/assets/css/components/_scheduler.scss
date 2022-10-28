@@ -1,0 +1,107 @@
+@mixin media-sm {
+    @media screen and (max-width: 680px) {
+        @content;
+    }
+}
+
+.section1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:30vh;
+    background-color: wheat;
+    text-align: center;
+    font-size: 30px;
+}
+
+.section2 {
+    display: flex;
+    justify-content: center;
+    padding: 200px 0;
+    background-color: wheat;
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1140px;
+            margin-left: -10%;
+            @include media-sm{
+               width: 500px;
+               max-width: 100%;
+            }
+            .boxwrap-half {
+                position: relative;
+                display: flex;
+                justify-content: end;
+                width: 50%;
+                .box2 {
+                    width: 100px;
+                    height: 100px;
+                    background-color: #fff;
+                    border-radius: 60%;
+                    @include media-sm{
+                        width:50px;
+                        height: 50px;
+                    }
+                }
+                
+                .typing {
+                    font-size: 2rem;
+                    font-family: "DotGothic16", sans-serif;
+                    color: #fff;
+                    @include media-sm{
+                        font-size: 1rem;
+                    }
+                }
+                .cursor {
+                    visibility: "hidden";
+                    color: #fff;
+                    font-size: 2rem;
+                }
+            }
+            .boxwrap-full {
+                position: relative;
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                .box2 {
+                    width: 100px;
+                    height: 100px;
+                    background-color: #fff;
+                    border-radius: 60%;
+                    @include media-sm{
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+                .typing {
+                    font-size: 2rem;
+                    font-family: "DotGothic16", sans-serif;
+                    color: #fff;
+                    @include media-sm{
+                       font-size: 1rem;
+                    }
+                }
+                .cursor {
+                    visibility: "hidden";
+                    color: #fff;
+                    font-size: 2rem;
+                }
+        }
+      }
+}
+
+
+
+//   .section3 {
+//     position: relative;
+//     overflow: hidden;
+//     height: 100vh;
+//     background-color: #1e2a60;
+//   }
+
+//   .line{
+//     width: 20px;
+//     background: black;
+//   }
+
+  

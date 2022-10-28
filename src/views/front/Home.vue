@@ -109,6 +109,15 @@
             </p>
           </div>
         </li>
+        <li class="boxwrap-full">
+          <div>
+            <div class="animation-wrapper box2 from-right"></div>
+            <p>
+              <span class="animation-wrapper typing typing4"></span>
+              <span class="cursor">_</span>
+            </p>
+          </div>
+        </li>
       </ul>
     </section>
     <!-- Scheduler gsap END-->
@@ -283,10 +292,11 @@ export default {
         const typing1Content = '11/01 PM20:00 直播I';
         const typing2Content = '11/02 PM20:00 直播II';
         const typing3Content = '11/04 PM20:00 直播III';
+        const typing4Content = '11/05 PM20:00 收單';
 
         gsap.to('.typing1', {
           text: typing1Content,
-          duration: 1.5,
+          duration: 2,
           scrollTrigger: {
             trigger: '.typing1',
             toggleActions: 'play pause resume reset', // 滑鼠滾動位置
@@ -295,7 +305,7 @@ export default {
 
         gsap.to('.typing2', {
           text: typing2Content,
-          duration: 1.5,
+          duration: 2,
           scrollTrigger: {
             trigger: '.typing2',
             toggleActions: 'play pause resume reset',
@@ -303,9 +313,18 @@ export default {
         });
         gsap.to('.typing3', {
           text: typing3Content,
-          duration: 1.5,
+          duration: 2,
           scrollTrigger: {
             trigger: '.typing3',
+            toggleActions: 'play pause resume reset',
+          },
+        });
+
+        gsap.to('.typing4', {
+          text: typing4Content,
+          duration: 2,
+          scrollTrigger: {
+            trigger: '.typing4',
             toggleActions: 'play pause resume reset',
           },
         });
@@ -318,72 +337,3 @@ export default {
   // },
 };
 </script>
-
-<style lang="scss" scoped>
-  .section1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:30vh;
-    background-color: wheat;
-    text-align: center;
-    font-size: 30px;
-  }
-
-  .section2 {
-    display: flex;
-    justify-content: center;
-    padding: 200px 0;
-    background-color: wheat;
-  }
-
-  .container2 {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1140px;
-    margin-left: -10%;
-  }
-  .boxwrap-half {
-    position: relative;
-    display: flex;
-    justify-content: end;
-    width: 50%;
-  }
-  .boxwrap-full {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: end;
-  }
-
-  .box2 {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    border-radius: 60%;
-  }
-
-  .section3 {
-    position: relative;
-    overflow: hidden;
-    height: 100vh;
-    background-color: #1e2a60;
-  }
-
-  .typing {
-    font-size: 2rem;
-    font-family: "DotGothic16", sans-serif;
-    color: #fff;
-  }
-  .cursor {
-    visibility: "hidden";
-    color: #fff;
-    font-size: 2rem;
-  }
-
-  .line{
-    width: 20px;
-    background: black;
-  }
-
-</style>
