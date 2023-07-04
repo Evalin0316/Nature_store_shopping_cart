@@ -96,7 +96,7 @@
         <div class="col-md-6 p-3 px-md-0 py-md-5 lh-lg">
           <h2 class="fs-5 text-primary">注意事項</h2>
           <p class="mb-4">
-           {{product.content}}
+          {{product.content}}
           </p>
         </div>
         <div class="bg-notice col-6">

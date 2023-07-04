@@ -68,7 +68,7 @@
           <br />
           男士打造自然穿著又不失時尚
           <br />
-         不論小隻女高女孩皆可駕馭
+          不論小隻女高女孩皆可駕馭
         </div>
       </div>
       <FrontSwiper
@@ -78,49 +78,6 @@
         title="熱銷商品"
       />
     </div>
-     <!-- Scheduler gsap Start-->
-    <!-- <section class="section1">November Scheduler</section>
-      <section class="section2">
-      <ul class="container2">
-        <li class="boxwrap-half">
-          <div>
-            <div class="animation-wrapper box2 from-left"></div>
-            <p>
-              <span class="animation-wrapper typing typing1"></span>
-              <span class="cursor">_</span>
-            </p>
-          </div>
-        </li>
-        <li class="boxwrap-full">
-          <div>
-            <div class="animation-wrapper box2 from-right"></div>
-            <p>
-              <span class="animation-wrapper typing typing2"></span>
-              <span class="cursor">_</span>
-            </p>
-          </div>
-        </li>
-        <li class="boxwrap-half">
-          <div>
-            <div class="animation-wrapper box2 from-left"></div>
-            <p>
-              <span class="animation-wrapper typing typing3"></span>
-              <span class="cursor">_</span>
-            </p>
-          </div>
-        </li>
-        <li class="boxwrap-full">
-          <div>
-            <div class="animation-wrapper box2 from-right"></div>
-            <p>
-              <span class="animation-wrapper typing typing4"></span>
-              <span class="cursor">_</span>
-            </p>
-          </div>
-        </li>
-      </ul>
-    </section> -->
-    <!-- Scheduler gsap END-->
     <div class="bg-cover booking text-light flex-column">
       <h3 class="fs-5 ls-2 fw-normal mb-4">訂閱最新消息</h3>
         <Form class="container row g-2 g-md-0 px-5 w-md-60
