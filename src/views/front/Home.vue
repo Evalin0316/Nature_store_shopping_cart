@@ -79,7 +79,7 @@
       />
     </div>
      <!-- Scheduler gsap Start-->
-    <section class="section1">November Scheduler</section>
+    <!-- <section class="section1">November Scheduler</section>
       <section class="section2">
       <ul class="container2">
         <li class="boxwrap-half">
@@ -119,7 +119,7 @@
           </div>
         </li>
       </ul>
-    </section>
+    </section> -->
     <!-- Scheduler gsap END-->
     <div class="bg-cover booking text-light flex-column">
       <h3 class="fs-5 ls-2 fw-normal mb-4">訂閱最新消息</h3>
@@ -162,9 +162,6 @@
 import { apiAllProducts } from '@/scripts/api';
 import FrontSwiper from '@/components/FrontSwiper.vue';
 import fadeInMix from '@/mixins/FadeInMix.vue';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
 
 export default {
   emits: ['page-loading', 'push-message', 'toggle-spinner'],
@@ -216,124 +213,5 @@ export default {
     this.getAllProducts();
     this.$emitter.emit('page-loading', true);
   },
-  mounted() {
-    gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-    // 打字提示閃爍效果
-    gsap.fromTo(
-      '.cursor',
-      0,
-      {
-        visibility: 'hidden',
-      },
-      {
-        visibility: 'visible',
-        repeat: -1,
-        yoyo: true, // 若為true，則動畫repeat運行順序會以倒放的形式回去
-        repeatDelay: 0.3, // 下一次repeat的deplay時間
-      },
-    );
-
-    function hide(element) {
-      gsap.set(element, { opacity: 0, visibility: 'hidden' });
-    }
-
-    function animated(element) {
-      let x = 0;
-
-      // 依照條件設定x初始值
-      if (element.classList.contains('from-left')) {
-        x = -100; // 元素從左方漸變
-      } else if (element.classList.contains('from-right')) {
-        x = 100; // 元素從右方漸變
-      }
-
-      // 設定元素初始值
-      // eslint-disable-next-line no-param-reassign
-      element.style.transform = `translate(${x}px, 0px)`;
-      gsap.fromTo(
-        element,
-        {
-          x, y: 0, opacity: 0, visibility: 'hidden',
-        },
-        {
-          duration: 1,
-          delay: 0.2,
-          x: 0,
-          y: 0,
-          visibility: 'visible',
-          opacity: '1',
-          ease: 'slow',
-          overwrite: 'auto',
-        },
-      );
-    }
-
-    gsap.utils.toArray('.animation-wrapper').forEach((element) => {
-      if (
-        element.classList.contains('from-left')
-        || element.classList.contains('from-right')
-      ) {
-        hide(element);
-        ScrollTrigger.create({
-          trigger: element,
-          markers: true,
-          onEnter() {
-            animated(element);
-          },
-          onEnterBack() {
-            animated(element);
-          },
-          onLeave() {
-            hide(element);
-          },
-        });
-      } else if (element.classList.contains('typing')) {
-        const typing1Content = '11/01 PM20:00 直播I';
-        const typing2Content = '11/02 PM20:00 直播II';
-        const typing3Content = '11/04 PM20:00 直播III';
-        const typing4Content = '11/05 PM20:00 收單';
-
-        gsap.to('.typing1', {
-          text: typing1Content,
-          duration: 2,
-          scrollTrigger: {
-            trigger: '.typing1',
-            toggleActions: 'play pause resume reset', // 滑鼠滾動位置
-          },
-        });
-
-        gsap.to('.typing2', {
-          text: typing2Content,
-          duration: 2,
-          scrollTrigger: {
-            trigger: '.typing2',
-            toggleActions: 'play pause resume reset',
-          },
-        });
-        gsap.to('.typing3', {
-          text: typing3Content,
-          duration: 2,
-          scrollTrigger: {
-            trigger: '.typing3',
-            toggleActions: 'play pause resume reset',
-          },
-        });
-
-        gsap.to('.typing4', {
-          text: typing4Content,
-          duration: 2,
-          scrollTrigger: {
-            trigger: '.typing4',
-            toggleActions: 'play pause resume reset',
-          },
-        });
-      }
-    });
-  },
-  // unmounted() {
-  //   const trigger = ScrollTrigger.getAll();
-  //   trigger.kill();
-  // },
 };
 </script>
