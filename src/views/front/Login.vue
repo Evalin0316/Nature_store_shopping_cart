@@ -22,8 +22,8 @@
           needs-validation
         "
         novalidate
-        @submit.prevent="signin"
       >
+      <!-- @submit.prevent="signin" -->
         <h1 class="fs-4 fw-bold mb-4 text-center">登入後台</h1>
         <div class="form-floating mb-3">
           <input
